@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VS Facility Management Services</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+<style>
+        .image-placeholder {
+            background: linear-gradient(135deg, #e5e7eb 0%, #d1d5db 100%);
+            border: 2px dashed #9ca3af;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6b7280;
+            font-weight: 500;
+            text-align: center;
+            position: relative;
+        }
+        .icon-placeholder {
+            background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+            border: 1px dashed #d1d5db;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #9ca3af;
+            font-size: 0.875rem;
+        }
+        .page {
+            display: none;
+        }
+        .page.active {
+            display: block;
+        }
+        .nav-link {
+            transition: all 0.3s ease;
+        }
+        .nav-link:hover {
+            color: #8B0000;
+            transform: translateY(-1px);
+        }
+        .nav-link.active {
+            color: #8B0000;
+            font-weight: 600;
+        }
+        .service-card {
+            transition: all 0.3s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        .metric-card {
+            background: linear-gradient(135deg, #8B0000 0%, #A0522D 100%);
+        }
+        
+        /* Visual Effects for Home Page */
+        .hero-content {
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        .hero-image {
+            animation: fadeInRight 1.2s ease-out;
+        }
+        
+        .service-grid {
+            animation: fadeInUp 0.8s ease-out 0.3s both;
+        }
+        
+        .metrics-section {
+            animation: fadeInUp 0.8s ease-out 0.5s both;
+        }
+        
+        .floating-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .pulse-animation {
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #8B0000, #B8860B, #A0522D);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 3s ease infinite;
+        }
+        
+        .parallax-bg {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        .glow-effect {
+            box-shadow: 0 0 20px rgba(139, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .glow-effect:hover {
+            box-shadow: 0 0 30px rgba(139, 0, 0, 0.5);
+            transform: translateY(-2px);
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+        
+        @keyframes gradientShift {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+        
+        @keyframes slideInFromLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .stagger-animation {
+            animation: slideInFromLeft 0.6s ease-out forwards;
+        }
+        
+        .stagger-1 { animation-delay: 0.1s; opacity: 0; }
+        .stagger-2 { animation-delay: 0.2s; opacity: 0; }
+        .stagger-3 { animation-delay: 0.3s; opacity: 0; }
+        .stagger-4 { animation-delay: 0.4s; opacity: 0; }
+        .stagger-5 { animation-delay: 0.5s; opacity: 0; }
+        .stagger-6 { animation-delay: 0.6s; opacity: 0; }
+    </style>
+</head>
+
+<body class="bg-gray-50 font-sans">
+   <!-- Header -->
+<header class="bg-white shadow-lg sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center py-4">
+      
+      <!-- Logo -->
+      <div class="flex items-center">
+        <img src="logo.jpg" alt="Company Logo" class="h-14 w-auto">
+      </div>
+
+      <!-- Navigation -->
+      <nav class="hidden md:flex space-x-8">
+        <a href="#" class="nav-link text-gray-700" onclick="showPage('home')">Home</a>
+        <a href="#" class="nav-link text-gray-700" onclick="showPage('about')">About Us</a>
+        <a href="#" class="nav-link text-gray-700" onclick="showPage('services')">Services</a>
+        <a href="#" class="nav-link text-gray-700" onclick="showPage('projects')">Training</a>
+        <a href="#" class="nav-link text-gray-700" onclick="showPage('training')">Gallery</a>
+        <a href="#" class="nav-link text-gray-700" onclick="showPage('heritage')">Our Clients </a>
+        <a href="#" class="nav-link text-gray-700" onclick="showPage('contact')">Contact Us</a>
+      </nav>
+
+    </div>
+  </div>
+</header>
+
+    <!-- Home Page -->
+     <!-- Services Preview on Home -->
+
+    <div id="home" class="page active">
+        <!-- Hero Banner -->
+        <section class="bg-gradient-to-r from-red-900 via-red-800 to-yellow-700 text-white py-20 parallax-bg relative overflow-hidden">
+            <div class="absolute inset-0 bg-black bg-opacity-20"></div>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="hero-content">
+                        <h1 class="text-5xl font-bold mb-6 gradient-text">Smart Facility Solutions for Every Industry</h1>
+                        <p class="text-xl mb-8 opacity-90">We combine trained manpower, sustainable practices, and technology-driven services to transform workplaces.</p>
+
+                    </div>
+                    <div class="hero-image">
+                       
+                             <!-- Hero Image -->
+        <div class="hero-image">
+          <img src="img1.jpg" alt="Professional Services" class="h-80 w-full object-cover rounded-lg floating-animation">
+        </div>
+
+                          
+                        </div>
+                    </div>
+                </div>
+                <!-- Animated background elements -->
+            <div class="absolute top-10 left-10 w-20 h-20 bg-yellow-600 bg-opacity-20 rounded-full floating-animation"></div>
+            <div class="absolute bottom-20 right-20 w-16 h-16 bg-yellow-600 bg-opacity-20 rounded-full floating-animation" style="animation-delay: 1s;"></div>
+            <div class="absolute top-1/2 left-1/4 w-12 h-12 bg-yellow-600 bg-opacity-20 rounded-full floating-animation" style="animation-delay: 2s;"></div>
+
+        </section>
+
+        <section class="py-16 bg-white relative overflow-hidden">
+  <div class="absolute inset-0 bg-gradient-to-br from-red-50 to-yellow-50 opacity-50"></div>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <h2 class="text-4xl font-bold text-center mb-12 text-gray-900 gradient-text">Our Services</h2>
+
+    <!--Service Grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      <!-- Service Card-->
+      <div class="service-card bg-white p-6 rounded-lg shadow-lg border glow-effect stagger-animation stagger-1 flex flex-col items-center text-center">
+        <div class="w-32 h-32 mb-4">
+          <img src="waste.jpg" alt="Waste Management" class="w-full h-full object-cover rounded-md">
+        </div>
+        <h3 class="text-xl font-semibold mb-3 text-red-900">Waste Management</h3>
+        <p class="text-gray-600">Efficient collection, segregation, and disposal of waste to maintain cleanliness.</p>
+      </div>
+
+      <!-- Service Card -->
+      <div class="service-card bg-white p-6 rounded-lg shadow-lg border glow-effect stagger-animation stagger-2 flex flex-col items-center text-center">
+        <div class="w-32 h-32 mb-4">
+          <img src="3.jpg" alt="Facility Management" class="w-full h-full object-cover rounded-md">
+        </div>
+        <h3 class="text-xl font-semibold mb-3 text-red-900">Facility Management</h3>
+        <p class="text-gray-600">Complete building and infrastructure management.</p>
+      </div>
+
+      <!-- Service Card -->
+      <div class="service-card bg-white p-6 rounded-lg shadow-lg border glow-effect stagger-animation stagger-3 flex flex-col items-center text-center">
+        <div class="w-32 h-32 mb-4">
+          <img src="lanscaping.jpg" alt="Landscaping Services" class="w-full h-full object-cover rounded-md">
+        </div>
+        <h3 class="text-xl font-semibold mb-3 text-red-900">Landscaping Services</h3>
+        <p class="text-gray-600">Seasonal planting and maintenance of gardens.</p>
+      </div>
+
+      <!-- Service Card -->
+      <div class="service-card bg-white p-6 rounded-lg shadow-lg border glow-effect stagger-animation stagger-4 flex flex-col items-center text-center">
+        <div class="w-32 h-32 mb-4">
+          <img src="reception.jpg" alt="Front Desk Support" class="w-full h-full object-cover rounded-md">
+        </div>
+        <h3 class="text-xl font-semibold mb-3 text-red-900">Front Desk Support</h3>
+        <p class="text-gray-600">Customer service support for guests. Assistance with check-ins, reservations, and inquiries.</p>
+      </div>
+
+      <!-- Service Card -->
+      <div class="service-card bg-white p-6 rounded-lg shadow-lg border glow-effect stagger-animation stagger-5 flex flex-col items-center text-center">
+        <div class="w-32 h-32 mb-4">
+          <img src="Pest Control.jpg" alt="Pest Control" class="w-full h-full object-cover rounded-md">
+        </div>
+        <h3 class="text-xl font-semibold mb-3 text-red-900">Pest Control</h3>
+        <p class="text-gray-600">Implementation of pest prevention measures.</p>
+      </div>
+
+      <!-- Service Card -->
+      <div class="service-card bg-white p-6 rounded-lg shadow-lg border glow-effect stagger-animation stagger-6 flex flex-col items-center text-center">
+        <div class="w-32 h-32 mb-4">
+          <img src="17.jpg" alt="Apprenticeships & Training" class="w-full h-full object-cover rounded-md">
+        </div>
+        <h3 class="text-xl font-semibold mb-3 text-red-900">Apprenticeships & Training</h3>
+        <p class="text-gray-600">Professional development and skill building.</p>
+      </div>
+
+    </div>
+
+</section>
+
+
+<!-- our impact--> 
+ 
+        <section class="py-16 bg-gray-100 relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-r from-red-900 via-yellow-800 to-red-900 opacity-10"></div>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <h2 class="text-4xl font-bold text-center mb-12 text-gray-900 gradient-text">Our Impact</h2>
+                <div class="metrics-section grid md:grid-cols-4 gap-8">
+                    <div class="metric-card text-white p-8 rounded-lg text-center glow-effect floating-animation">
+                        
+                        <div class="text-3xl font-bold mb-2 counter" data-target="5000">1000+</div>
+                        <div class="text-yellow-100">Trained Employees</div>
+                    </div>
+
+
+                    <div class="metric-card text-white p-8 rounded-lg text-center glow-effect floating-animation" style="animation-delay: 0.2s;">
+                       
+                        <div class="text-3xl font-bold mb-2 counter" data-target="50">20+</div>
+                        <div class="text-yellow-100">Clients</div>
+                    </div>
+
+
+                    <div class="metric-card text-white p-8 rounded-lg text-center glow-effect floating-animation" style="animation-delay: 0.4s;">
+                        
+                        <div class="text-3xl font-bold mb-2 counter" data-target="200">10+</div>
+                        <div class="text-yellow-100">Years Experience</div>
+                    </div>
+                    <div class="metric-card text-white p-8 rounded-lg text-center glow-effect floating-animation" style="animation-delay: 0.6s;">
+                        
+                        <div class="text-3xl font-bold mb-2 counter" data-target="1000">20+</div>
+                        <div class="text-yellow-100">Project Sites</div>
+                    </div>
+                </div>
+            </div>
+       
+            </div>
+            
+        
+<!--Our Services-->
+         
+<!--<section class="py-16 bg-white relative overflow-hidden">
+  <div class="absolute inset-0 bg-gradient-to-br from-red-50 to-yellow-50 opacity-50"></div>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <h2 class="text-4xl font-bold text-center mb-12 text-gray-900 gradient-text">Our Services</h2>
+
+    <!-- Service Grid 
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      <!-- Service Card
+      <div class="service-card bg-white p-6 rounded-lg shadow-lg border glow-effect stagger-animation stagger-1 flex flex-col items-center text-center">
+        <div class="w-32 h-32 mb-4">
+          <img src="waste.jpg" alt="Waste Management" class="w-full h-full object-cover rounded-md">
+        </div>
+        <h3 class="text-xl font-semibold mb-3 text-red-900">Waste Management</h3>
+        <p class="text-gray-600">Efficient collection, segregation, and disposal of waste to maintain cleanliness.</p>
+      </div>
+
+      <!-- Service Card 
+      <div class="service-card bg-white p-6 rounded-lg shadow-lg border glow-effect stagger-animation stagger-2 flex flex-col items-center text-center">
+        <div class="w-32 h-32 mb-4">
+          <img src="3.jpg" alt="Facility Management" class="w-full h-full object-cover rounded-md">
+        </div>
+        <h3 class="text-xl font-semibold mb-3 text-red-900">Facility Management</h3>
+        <p class="text-gray-600">Complete building and infrastructure management.</p>
+      </div>
+
+      <!-- Service Card 
+      <div class="service-card bg-white p-6 rounded-lg shadow-lg border glow-effect stagger-animation stagger-3 flex flex-col items-center text-center">
+        <div class="w-32 h-32 mb-4">
+          <img src="lanscaping.jpg" alt="Landscaping Services" class="w-full h-full object-cover rounded-md">
+        </div>
+        <h3 class="text-xl font-semibold mb-3 text-red-900">Landscaping Services</h3>
+        <p class="text-gray-600">Seasonal planting and maintenance of gardens.</p>
+      </div>
+
+      <!-- Service Card 
+      <div class="service-card bg-white p-6 rounded-lg shadow-lg border glow-effect stagger-animation stagger-4 flex flex-col items-center text-center">
+        <div class="w-32 h-32 mb-4">
+          <img src="reception.jpg" alt="Front Desk Support" class="w-full h-full object-cover rounded-md">
+        </div>
+        <h3 class="text-xl font-semibold mb-3 text-red-900">Front Desk Support</h3>
+        <p class="text-gray-600">Customer service support for guests. Assistance with check-ins, reservations, and inquiries.</p>
+      </div>
+
+      <!-- Service Card 
+      <div class="service-card bg-white p-6 rounded-lg shadow-lg border glow-effect stagger-animation stagger-5 flex flex-col items-center text-center">
+        <div class="w-32 h-32 mb-4">
+          <img src="Pest Control.jpg" alt="Pest Control" class="w-full h-full object-cover rounded-md">
+        </div>
+        <h3 class="text-xl font-semibold mb-3 text-red-900">Pest Control</h3>
+        <p class="text-gray-600">Implementation of pest prevention measures.</p>
+      </div>
+
+      <!-- Service Card 
+      <div class="service-card bg-white p-6 rounded-lg shadow-lg border glow-effect stagger-animation stagger-6 flex flex-col items-center text-center">
+        <div class="w-32 h-32 mb-4">
+          <img src="17.jpg" alt="Apprenticeships & Training" class="w-full h-full object-cover rounded-md">
+        </div>
+        <h3 class="text-xl font-semibold mb-3 text-red-900">Apprenticeships & Training</h3>
+        <p class="text-gray-600">Professional development and skill building.</p>
+      </div>
+
+    </div>
+
+</section>-->
+</div>
+
+
+        <!-- our impact--> 
+ 
+        <!--<section class="py-16 bg-gray-100 relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-r from-red-900 via-yellow-800 to-red-900 opacity-10"></div>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <h2 class="text-4xl font-bold text-center mb-12 text-gray-900 gradient-text">Our Impact</h2>
+                <div class="metrics-section grid md:grid-cols-4 gap-8">
+                    <div class="metric-card text-white p-8 rounded-lg text-center glow-effect floating-animation">
+                        
+                        <div class="text-3xl font-bold mb-2 counter" data-target="5000">1000+</div>
+                        <div class="text-yellow-100">Trained Employees</div>
+                    </div>
+
+
+                    <div class="metric-card text-white p-8 rounded-lg text-center glow-effect floating-animation" style="animation-delay: 0.2s;">
+                       
+                        <div class="text-3xl font-bold mb-2 counter" data-target="50">20+</div>
+                        <div class="text-yellow-100">Clients</div>
+                    </div>
+
+
+                    <div class="metric-card text-white p-8 rounded-lg text-center glow-effect floating-animation" style="animation-delay: 0.4s;">
+                        
+                        <div class="text-3xl font-bold mb-2 counter" data-target="200">10+</div>
+                        <div class="text-yellow-100">Years Experience</div>
+                    </div>
+                    <div class="metric-card text-white p-8 rounded-lg text-center glow-effect floating-animation" style="animation-delay: 0.6s;">
+                        
+                        <div class="text-3xl font-bold mb-2 counter" data-target="1000">20+</div>
+                        <div class="text-yellow-100">Project Sites</div>
+                    </div>
+                </div>
+            </div>-->
+        
+  <!-- Animated background particles -->
+  <div class="absolute top-20 left-20 w-4 h-4 bg-red-600 rounded-full floating-animation opacity-30"></div>
+  <div class="absolute bottom-20 right-20 w-6 h-6 bg-yellow-600 rounded-full floating-animation opacity-30" style="animation-delay: 1.5s;"></div>
+  <div class="absolute top-1/2 right-1/4 w-3 h-3 bg-red-500 rounded-full floating-animation opacity-30" style="animation-delay: 2.5s;"></div>
+</section>
+
+         <!--   Animated background particles 
+            <div class="absolute top-20 left-20 w-4 h-4 bg-red-600 rounded-full floating-animation opacity-30"></div>
+            <div class="absolute bottom-20 right-20 w-6 h-6 bg-yellow-600 rounded-full floating-animation opacity-30" style="animation-delay: 1.5s;"></div>
+            <div class="absolute top-1/2 right-1/4 w-3 h-3 bg-red-500 rounded-full floating-animation opacity-30" style="animation-delay: 2.5s;"></div>
+        </section>--> 
+
+
+    </div>
+<!--OUr impact 
+        <section class="py-16 bg-gray-100 relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-r from-red-900 via-yellow-800 to-red-900 opacity-10"></div>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <h2 class="text-4xl font-bold text-center mb-12 text-gray-900 gradient-text">Our Impact</h2>
+                <div class="metrics-section grid md:grid-cols-4 gap-8">
+                    <div class="metric-card text-white p-8 rounded-lg text-center glow-effect floating-animation">
+                        
+                        <div class="text-3xl font-bold mb-2 counter" data-target="5000">1000+</div>
+                        <div class="text-yellow-100">Trained Employees</div>
+                    </div>
+
+
+                    <div class="metric-card text-white p-8 rounded-lg text-center glow-effect floating-animation" style="animation-delay: 0.2s;">
+                       
+                        <div class="text-3xl font-bold mb-2 counter" data-target="50">20+</div>
+                        <div class="text-yellow-100">Clients</div>
+                    </div>
+
+
+                    <div class="metric-card text-white p-8 rounded-lg text-center glow-effect floating-animation" style="animation-delay: 0.4s;">
+                        
+                        <div class="text-3xl font-bold mb-2 counter" data-target="200">10+</div>
+                        <div class="text-yellow-100">Years Experience</div>
+                    </div>
+                    <div class="metric-card text-white p-8 rounded-lg text-center glow-effect floating-animation" style="animation-delay: 0.6s;">
+                        
+                        <div class="text-3xl font-bold mb-2 counter" data-target="1000">20+</div>
+                        <div class="text-yellow-100">Project Sites</div>
+                    </div>
+                </div>
+    
+            <!-- Animated background particles 
+            <div class="absolute top-20 left-20 w-4 h-4 bg-red-600 rounded-full floating-animation opacity-30"></div>
+            <div class="absolute bottom-20 right-20 w-6 h-6 bg-yellow-600 rounded-full floating-animation opacity-30" style="animation-delay: 1.5s;"></div>
+            <div class="absolute top-1/2 right-1/4 w-3 h-3 bg-red-500 rounded-full floating-animation opacity-30" style="animation-delay: 2.5s;"></div>
+        </section>
+        </div>
+
+
+    </div>-->
+    <!-- About Us Page -->
+    <div id="about" class="page">
+        <section class="py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h1 class="text-5xl font-bold text-center mb-12 text-red-900">About Us</h1>
+                
+                <div class="grid md:grid-cols-2 gap-12 mb-16">
+                    <div>
+                        <h2 class="text-3xl font-bold mb-6 text-red-900">Our Story</h2>
+                        <p class="text-lg text-gray-600 mb-6">Founded in 2014, VS Facility Management Services was built on a simple mission: to deliver exceptional housekeeping and facility management solutions to the institutions that matter most – hospitals, schools, and colleges.<br>
+
+What began as a small team of dedicated professionals has grown into a comprehensive facility management company, proudly serving 50+ institutions across the region. Our unwavering commitment to excellence, safety, and reliability has made us the trusted partner for managing critical environments.
+<br>
+The company was founded by Mr. Amit Jadhav, who brings over 20 years of experience in the hospitality industry, having worked with some of the most prestigious properties. His leadership continues to inspire our focus on quality and customer satisfaction.<br>
+
+Today, VS Facility Management Services continues to innovate, expand, and adapt—while maintaining the personal touch and attention to detail that our clients have always valued.</p>
+                        <p class="text-lg text-gray-600">From emergency services to clean energy solutions, we deliver results that matter to communities and businesses alike.</p>
+                    </div>
+                    <div class="flex justify-center">
+                    <img src="group.jpg" alt="Our Team" class="w-full h-auto max-w-xl rounded-lg shadow-lg">
+                </div>
+                </div>
+
+                <!-- Mission & Values -->
+                <div class="bg-gradient-to-br from-red-50 to-yellow-50 p-8 rounded-lg mb-16">
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h3 class="text-2xl font-bold mb-4 text-red-900">Our Mission</h3>
+                            <p class="text-gray-600">To be a trusted leader in facility management by delivering cost-effective and consumer-centric solutions that create healthier, safer, and more sustainable environments.
+We aim to set new benchmarks in quality and reliability</p>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold mb-4 text-red-900">Our Values</h3>
+                            <ul class="text-gray-600 space-y-2">
+                                <li>• Excellence in service delivery</li>
+                                <li>• Environmental responsibility</li>
+                                <li>• Community partnership</li>
+                                <li>• Innovation and growth</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline -->
+               
+                <h2 class="text-3xl font-bold text-center mb-12 text-red-900">Our Journey</h2>
+                <div class="space-y-8">
+                    <div class="flex items-center space-x-8">
+        <div class="flex-shrink-0 w-24 text-center">
+            <div class="text-2xl font-bold text-yellow-700">2014</div>
+        </div>
+        <div>
+            <h3 class="text-xl font-semibold mb-2 text-red-900">Company Founded</h3>
+            <p class="text-gray-600">Started with a small team</p>
+        </div>
+    </div>
+                    <div class="flex items-center space-x-8">
+                        <div class="flex-shrink-0 w-24 text-center">
+                            <div class="text-2xl font-bold text-yellow-700">2015</div>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-xl font-semibold mb-2 text-red-900">Major Expansion</h3>
+                            <p class="text-gray-600">Added facility management and clean energy divisions</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-8">
+                        <div class="flex-shrink-0 w-24 text-center">
+                            <div class="text-2xl font-bold text-yellow-700">2020</div>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-xl font-semibold mb-2 text-red-900">Success Milestone</h3>
+                            <p class="text-gray-600">Grown into a trusted facility management partner.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+  
+   
+
+    <!-- Services Page -->
+    <div id="services" class="page">
+        <section class="py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h1 class="text-5xl font-bold text-center mb-12 text-red-900">Our Services</h1>
+                <p class="text-xl text-center text-gray-600 mb-16 max-w-3xl mx-auto">We provide comprehensive professional services across multiple sectors, delivering excellence and innovation in every project.</p>
+                
+                <div class="space-y-16">
+                    <!-- Emergency Services -->
+                    <div class="grid md:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <h2 class="text-3xl font-bold mb-6 text-red-900">Waste Management</h2>
+                            <p class="text-lg text-gray-600 mb-6">At VS Facility Management Services, we ensure responsible and sustainable waste management by following strict segregation practices and eco-friendly disposal methods. <br>Our trained team manages biomedical, recyclable, and general waste with precision and compliance to safety standards, helping institutions maintain hygiene while contributing to a cleaner and greener environment. <br>Our efforts have been nationally recognized, as we are proud winners of two Swachh Bharat government-recognized awards for excellence in cleanliness and waste management.</p>
+                    
+                        </div>
+                       
+                           <img src="certificates.jpg" h-80 rounded-lga>
+                       
+                    </div>
+
+                    <!-- Facility Management -->
+                    <div class="grid md:grid-cols-2 gap-12 items-center">
+                        
+                            <img src="7.jpg" h-80 rounded-lg>
+                        
+                        <div>
+                            <h2 class="text-3xl font-bold mb-6 text-red-900">Facility Management</h2>
+                            <p class="text-lg text-gray-600 mb-6">At VS Facility Management Services, we recognize that modern facilities require more than just routine manual cleaning to maintain the highest standards of hygiene and efficiency. With the increasing size and complexity of institutions such as hospitals, educational campuses, malls, and corporate offices, manual cleaning alone often falls short in delivering consistent and comprehensive results. To address this, we have integrated mechanized cleaning into our facility management operations, ensuring that every corner is cleaned with precision and effectiveness.<br><br>
+
+                            Our services include the use of advanced equipment such as high-performance scrubber dryers, industrial vacuum cleaners, ride-on sweepers, and pressure washers. These machines are designed to handle large areas in significantly less time while providing a deeper and more uniform level of cleanliness. By using mechanized cleaning, we minimize human error, reduce the risk of cross-contamination, and ensure that hygiene standards remain consistently high, especially in sensitive environments such as hospitals where patient safety is a priority.<br><br>
+
+                            The adoption of cleaning machines not only enhances the quality of our services but also improves overall efficiency and sustainability. Mechanized processes reduce water and chemical usage, lower labor fatigue, and increase productivity, allowing our staff to focus on more detail-oriented tasks. This approach aligns with our commitment to safety, reliability, and innovation, enabling us to provide clients with solutions that are both effective and environmentally responsible. Through this integration of technology and expertise, we continue to raise the benchmark for facility management services.</p>
+                            
+                        </div>
+                    </div>
+
+                    <!-- Clean Energy -->
+                    <div class="grid md:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <h2 class="text-3xl font-bold mb-6 text-red-900">Landscaping Services</h2>
+                            <p class="text-lg text-gray-600 mb-6">At VS Facility Management Services, our landscaping solutions are designed to create and maintain green, vibrant, and welcoming outdoor spaces. From garden development and lawn care to tree plantation, irrigation, and seasonal maintenance, we provide end-to-end services that enhance the beauty and functionality of your premises. <br><br>Our trained team uses modern tools and eco-friendly practices to ensure that landscapes remain healthy, sustainable, and aesthetically pleasing throughout the year. Whether it’s a hospital campus, educational institution, residential society, or corporate park, we transform open spaces into environments that inspire well-being and harmony</p>
+                          
+                        </div>
+                       
+                           <img src="garden.jpg" h-80 rounded-lg>
+                        
+                    </div>
+
+                    <!-- Additional Services -->
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="bg-gradient-to-br from-red-50 to-yellow-50 p-8 rounded-lg">
+                            
+                              <img src="reception.jpg" h-48 rounded-lg mb-6>
+                            
+                            <h3 class="text-2xl font-bold mb-4 text-red-900">Front Desk Support</h3>
+                            <p class="text-gray-600">At VS Facility Management Services, we understand that the front desk is the first point of contact and sets the tone for every visitor’s experience. Our front desk services are designed to deliver professionalism, courtesy, and efficiency at all times. <br><br>From greeting and assisting guests to handling calls, maintaining visitor records, and coordinating with internal teams, our trained staff ensure smooth day-to-day operations. With a strong focus on communication skills, presentation, and customer care, we help institutions like hospitals, schools, corporate offices, and residential complexes create a welcoming and well-managed environment.</p>
+                        </div>
+                        <div class="bg-gradient-to-br from-red-50 to-yellow-50 p-8 rounded-lg">
+                            
+                              <img src="pest.jpg" h-48 rounded-lg mb-6>
+                          
+                            <h3 class="text-2xl font-bold mb-4 text-red-900">Pest Control</h3>
+                            <p class="text-gray-600">At VS Facility Management Services, we provide safe and effective pest control solutions tailored to the needs of hospitals, schools, residential complexes, and commercial facilities.<br><br> Our trained team uses government-approved, eco-friendly chemicals and modern techniques to control and prevent infestations of rodents, insects, and other pests. With a strong focus on hygiene, safety, and long-term prevention, we ensure that your premises remain clean, healthy, and free from pest-related risks. Regular monitoring and scheduled treatments help us deliver reliable and sustainable pest management services.</p>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+    </div>
+
+    <!-- Training Page -->
+    <div id="projects" class="page">
+        <section class="py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h1 class="text-5xl font-bold text-center mb-12 text-red-900">Transforming People Into Professionals</h1>
+                
+                <!-- Case Studies -->
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                       <img src="training1.jpg" alt="" h-48>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-3 text-red-900">Staff Training & Development Programs</h3>
+                            <p class="text-gray-600 mb-4">At VS Facility Management Services, we regularly conduct training sessions to enhance the skills and efficiency of our housekeeping staff. These programs focus on safety, hygiene, teamwork, and service excellence. Through interactive discussions and practical demonstrations, we empower our team to deliver high-quality services while maintaining a safe and professional work environment.</p>
+                            <span class="text-red-700 font-semibold">Professional Training</span>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                     <img src="training2.jpg" alt="" h-48>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-3 text-red-900">Health, Safety & Hygiene Training</h3>
+                            <p class="text-gray-600 mb-4">We provide focused training to ensure staff follow best practices in workplace safety, personal hygiene, and cleanliness standards. These sessions help create a healthier and safer environment for everyone.</p>
+                            <span class="text-yellow-700 font-semibold">Hygiene Protocols</span>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                       <img src="training3.jpg" alt="" h-48>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-3 text-red-900">Intetractive Training Sessions</h3>
+                            <p class="text-gray-600 mb-4">We organize interactive training sessions designed to engage and empower our housekeeping staff. These sessions combine discussions, demonstrations, and real-life scenarios to improve communication, teamwork, safety, and hygiene practices. By creating a participative learning environment, we ensure our team gains practical skills that enhance both service quality and workplace efficiency.</p>
+                            <span class="text-yellow-800 font-semibold">Engaging Training Sessions</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                   <img src="17.jpg" alt="Teamwork & Communication" class="h-48 w-full object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 text-red-900">Teamwork & Communication Workshops</h3>
+                        <p class="text-gray-600 mb-4">Our workshops focus on building effective communication and strong teamwork skills, helping staff collaborate better and deliver consistent service excellence.</p>
+                        <span class="text-blue-700 font-semibold">Collaboration Skills</span>
+                    </div>
+                </div>
+
+                <!-- New Card 5 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                   <img src="WhatsApp Image 2025-01-22 at 19.19.02_882d5591.jpg"" alt="Customer Service Excellence" class="h-48 w-full object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 text-red-900">Customer Service Excellence</h3>
+                        <p class="text-gray-600 mb-4">We train our staff to maintain a customer-first approach, ensuring polite, professional, and efficient service that enhances client satisfaction and trust.</p>
+                        <span class="text-green-700 font-semibold">Service Excellence</span>
+                    </div>
+                </div>
+
+                <!-- New Card 6 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                   <img src="15.jpg" alt="Leadership & Growth" class="h-48 w-full object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 text-red-900">Leadership & Growth Programs</h3>
+                        <p class="text-gray-600 mb-4">Designed for promising staff members, these programs build leadership qualities, problem-solving skills, and decision-making abilities for career advancement.</p>
+                        <span class="text-purple-700 font-semibold">Leadership Training</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+   <!-- Training Statistics -->
+                <div class="bg-red-900 text-white p-12 rounded-lg">
+                    <h2 class="text-3xl font-bold text-center mb-12">Training Impact</h2>
+                    <div class="grid md:grid-cols-4 gap-8">
+                        <div class="text-center">
+                            <div class="text-4xl font-bold mb-2">5,000+</div>
+                            <div class="text-yellow-100">Professionals Trained</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-4xl font-bold mb-2">25+</div>
+                            <div class="text-yellow-100">Training Programs</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-4xl font-bold mb-2">95%</div>
+                            <div class="text-yellow-100">Completion Rate</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-4xl font-bold mb-2">98%</div>
+                            <div class="text-yellow-100">Job Placement Rate</div>
+                        </div>
+                    </div>
+                </div>
+</div>
+                </div>
+ <!-- Training Features -->
+                <!--<div class="bg-gradient-to-br from-red-50 to-yellow-50 p-8 rounded-lg mb-16">
+                    <h2 class="text-3xl font-bold text-center mb-8 text-red-900">Training Excellence</h2>
+                    <div class="grid md:grid-cols-4 gap-8">
+                        <div class="text-center">
+                            <div class="icon-placeholder w-16 h-16 mx-auto mb-4 rounded-lg">
+                                🎯
+                            </div>
+                            <h3 class="text-lg font-semibold mb-2 text-red-900">Practical Learning</h3>
+                            <p class="text-gray-600 text-sm">Real-world scenarios and hands-on experience</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="icon-placeholder w-16 h-16 mx-auto mb-4 rounded-lg">
+                                👥
+                            </div>
+                            <h3 class="text-lg font-semibold mb-2 text-red-900">Expert Instructors</h3>
+                            <p class="text-gray-600 text-sm">Industry professionals with years of experience</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="icon-placeholder w-16 h-16 mx-auto mb-4 rounded-lg">
+                                📜
+                            </div>
+                            <h3 class="text-lg font-semibold mb-2 text-red-900">Certifications</h3>
+                            <p class="text-gray-600 text-sm">Industry-recognized qualifications and credentials</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="icon-placeholder w-16 h-16 mx-auto mb-4 rounded-lg">
+                                🏢
+                            </div>
+                            <h3 class="text-lg font-semibold mb-2 text-red-900">Modern Facilities</h3>
+                            <p class="text-gray-600 text-sm">State-of-the-art training centers and equipment</p>
+                        </div>
+                    </div>
+                </div>-->
+
+
+<!-- gallery Page -->
+<div id="training" class="page">
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 class="text-5xl font-bold text-center mb-12 text-red-900">Gallery</h1>
+            
+            <!-- Plain Image Gallery -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                <img src="gallery1.jpg" alt="Emergency Response Training" class="w-full h-64 object-contain bg-gray-100 rounded-lg shadow-lg">
+                <img src="gallery2.jpg" alt="Solar Installation Training" class="w-full h-64 object-contain bg-gray-100 rounded-lg shadow-lg">
+                <img src="gallery3.jpg" alt="Facility Management Training" class="w-full h-64 object-contain bg-gray-100 rounded-lg shadow-lg">
+                <img src="gallery4.jpg" alt="Waste Management Training" class="w-full h-64 object-contain bg-gray-100 rounded-lg shadow-lg">
+                <img src="gallery5.jpg" alt="Health & Safety Training" class="w-full h-64 object-contain bg-gray-100 rounded-lg shadow-lg">
+                <img src="gallery6.jpg" alt="Leadership Development" class="w-full h-64 object-contain bg-gray-100 rounded-lg shadow-lg">
+                <img src="gallery7.jpg" alt="Technical Skills Training" class="w-full h-64 object-contain bg-gray-100 rounded-lg shadow-lg">
+                <img src="gallery8.jpg" alt="Green Building Practices" class="w-full h-64 object-contain bg-gray-100 rounded-lg shadow-lg">
+                <img src="gallery9.jpg" alt="Soft Skills Development" class="w-full h-64 object-contain bg-gray-100 rounded-lg shadow-lg">
+            </div>
+        </div>
+    </section>
+</div>
+
+
+                <!-- Training Features -->
+                <!--<div class="bg-gradient-to-br from-red-50 to-yellow-50 p-8 rounded-lg mb-16">
+                    <h2 class="text-3xl font-bold text-center mb-8 text-red-900">Training Excellence</h2>
+                    <div class="grid md:grid-cols-4 gap-8">
+                        <div class="text-center">
+                            <div class="icon-placeholder w-16 h-16 mx-auto mb-4 rounded-lg">
+                                🎯
+                            </div>
+                            <h3 class="text-lg font-semibold mb-2 text-red-900">Practical Learning</h3>
+                            <p class="text-gray-600 text-sm">Real-world scenarios and hands-on experience</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="icon-placeholder w-16 h-16 mx-auto mb-4 rounded-lg">
+                                👥
+                            </div>
+                            <h3 class="text-lg font-semibold mb-2 text-red-900">Expert Instructors</h3>
+                            <p class="text-gray-600 text-sm">Industry professionals with years of experience</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="icon-placeholder w-16 h-16 mx-auto mb-4 rounded-lg">
+                                📜
+                            </div>
+                            <h3 class="text-lg font-semibold mb-2 text-red-900">Certifications</h3>
+                            <p class="text-gray-600 text-sm">Industry-recognized qualifications and credentials</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="icon-placeholder w-16 h-16 mx-auto mb-4 rounded-lg">
+                                🏢
+                            </div>
+                            <h3 class="text-lg font-semibold mb-2 text-red-900">Modern Facilities</h3>
+                            <p class="text-gray-600 text-sm">State-of-the-art training centers and equipment</p>
+                        </div>
+                    </div>
+                </div>-->
+
+                <!-- Training Statistics -->
+                <!--<div class="bg-red-900 text-white p-12 rounded-lg">
+                    <h2 class="text-3xl font-bold text-center mb-12">Training Impact</h2>
+                    <div class="grid md:grid-cols-4 gap-8">
+                        <div class="text-center">
+                            <div class="text-4xl font-bold mb-2">5,000+</div>
+                            <div class="text-yellow-100">Professionals Trained</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-4xl font-bold mb-2">25+</div>
+                            <div class="text-yellow-100">Training Programs</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-4xl font-bold mb-2">95%</div>
+                            <div class="text-yellow-100">Completion Rate</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-4xl font-bold mb-2">98%</div>
+                            <div class="text-yellow-100">Job Placement Rate</div>
+                        </div>
+                    </div>
+                </div>-->
+            </div>
+        </section>
+    </div>
+
+
+<!-- Heritage/Clients Page -->
+<div id="heritage" class="page">
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 class="text-5xl font-bold text-center mb-12 text-red-900">Our Clients</h1>
+
+            <!-- Client Logos Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-20 items-center">
+                <img src="logo1.jpg" alt="Client 1" class="h-20 mx-auto object-contain">
+                <img src="logo2.jpg" alt="Client 2" class="h-20 mx-auto object-contain">
+                <img src="logo3.png" alt="Client 3" class="h-20 mx-auto object-contain">
+                <img src="logo4.png" alt="Client 4" class="h-20 mx-auto object-contain">
+                <img src="logo5.png" alt="Client 5" class="h-20 mx-auto object-contain">
+                <img src="logo6.jpg" alt="Client 6" class="h-20 mx-auto object-contain">
+                <img src="logo7.jpg" alt="Client 7" class="h-20 mx-auto object-contain">
+                <img src="logo8.png" alt="Client 8" class="h-20 mx-auto object-contain">
+                <img src="logo9.png" alt="Client 9" class="h-20 mx-auto object-contain">
+                <img src="logo10.jpg" alt="Client 10" class="h-20 mx-auto object-contain">
+                <img src="logo11.jpg" alt="Client 11" class="h-20 mx-auto object-contain">
+                <img src="logo12.png" alt="Client 12" class="h-20 mx-auto object-contain">
+            </div>
+        </div>
+    </section>
+</div>
+<!-- Contact Page -->
+<div id="contact" class="page">
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 class="text-5xl font-bold text-center mb-12 text-red-900">Contact Us</h1>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Contact Information -->
+                <div>
+                    <h2 class="text-3xl font-bold mb-8 text-red-900">Get in Touch</h2>
+                    
+                    <div class="space-y-6">
+                        <!-- Address -->
+                        <div class="flex items-start space-x-4">
+                            <div class="icon-placeholder w-12 h-12 rounded-lg flex-shrink-0">📍</div>
+                            <div>
+                                <h3 class="text-lg font-semibold mb-1 text-red-900">Address</h3>
+                                <p class="text-gray-600">G1A, Vani Building CHS, Wadvali Village, Dr. C G Rd, Chembur Mumbai _400074</p>
+                            </div>
+                        </div>
+
+                        <!-- Phone -->
+                        <div class="flex items-start space-x-4">
+                            <div class="icon-placeholder w-12 h-12 rounded-lg flex-shrink-0">📞</div>
+                            <div>
+                                <h3 class="text-lg font-semibold mb-1 text-red-900">Phone</h3>
+                                <p class="text-gray-600">+91 9136911082</p>
+                            </div>
+                        </div>
+
+                        <!-- WhatsApp -->
+                        <div class="flex items-start space-x-4">
+                            <div class="icon-placeholder w-12 h-12 rounded-lg flex-shrink-0">💬</div>
+                            <div>
+                                <h3 class="text-lg font-semibold mb-1 text-red-900">WhatsApp</h3>
+                                <p class="text-gray-600">+91 8097711221</p>
+                            </div>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="flex items-start space-x-4">
+                            <div class="icon-placeholder w-12 h-12 rounded-lg flex-shrink-0">✉️</div>
+                            <div>
+                                <h3 class="text-lg font-semibold mb-1 text-red-900">Email</h3>
+                                <p class="text-gray-600">vs.fmsgroups@gmail.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ✅ Map with margin on top -->
+                <div class="mt-12 md:mt-0">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.401961264448!2d72.89867737497659!3d19.046056682152354!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c60c058f7525%3A0x5f6a9ecbd0a226d7!2sChoithram%20Gidwani%20Rd%2C%20Chembur%2C%20Mumbai%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1756459898465!5m2!1sen!2sin" 
+                        width="600" 
+                        height="450" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+    <!-- Contact Page 
+    <div id="contact" class="page">
+        <section class="py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h1 class="text-5xl font-bold text-center mb-12 text-red-900">Contact Us</h1>
+                
+                <div class="grid md:grid-cols-2 gap-12">
+                    <!-- Contact Information 
+                    <div>
+                        <h2 class="text-3xl font-bold mb-8 text-red-900">Get in Touch</h2>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start space-x-4">
+                                <div class="icon-placeholder w-12 h-12 rounded-lg flex-shrink-0">
+                                    📍
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-semibold mb-1 text-red-900">Address</h3>
+                                    <p class="text-gray-600">G1A, Vani Building CHS, Wadvali Village,  Dr. C G Rd, Chembur Mumbai _400074</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-4">
+                                <div class="icon-placeholder w-12 h-12 rounded-lg flex-shrink-0">
+                                    📞
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-semibold mb-1 text-red-900">Phone</h3>
+                                    <p class="text-gray-600">+91 9136911082</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-4">
+                                <div class="icon-placeholder w-12 h-12 rounded-lg flex-shrink-0">
+                                    💬
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-semibold mb-1 text-red-900">WhatsApp</h3>
+                                    <p class="text-gray-600">+91 8097711221</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-4  mb-100">
+                                <div class="icon-placeholder w-12 h-12 rounded-lg flex-shrink-0">
+                                    ✉️
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-semibold mb-1 text-red-900">Email</h3>
+                                    <p class="text-gray-600">vs.fmsgroups@gmail.com</p>
+                                </div>
+                            </div>
+                        </div>
+
+                      
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.401961264448!2d72.89867737497659!3d19.046056682152354!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c60c058f7525%3A0x5f6a9ecbd0a226d7!2sChoithram%20Gidwani%20Rd%2C%20Chembur%2C%20Mumbai%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1756459898465!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"  mt-18 referrerpolicy="no-referrer-when-downgrade"></iframe>-->
+                    <!-- Contact Form -->
+                  <!-- <div class="bg-gradient-to-br from-red-50 to-yellow-50 p-8 rounded-lg">
+                        <h2 class="text-2xl font-bold mb-6 text-red-900">Send us a Message</h2>
+                        <form class="space-y-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-red-900 mb-2">Name</label>
+                                <input type="text" id="name" name="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent" placeholder="Your full name">
+                            </div>
+                            
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-red-900 mb-2">Email</label>
+                                <input type="email" id="email" name="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent" placeholder="your.email@example.com">
+                            </div>
+                            
+                            <div>
+                                <label for="subject" class="block text-sm font-medium text-red-900 mb-2">Subject</label>
+                                <select id="subject" name="subject" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent">
+                                    <option>General Inquiry</option>
+                                    <option>Emergency Services</option>
+                                    <option>Facility Management</option>
+                                    <option>Landscaping Services</option>
+                                    <option>Waste Management</option>
+                                    <option>Pest Control</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-red-900 mb-2">Message</label>
+                                <textarea id="message" name="message" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent" placeholder="Tell us how we can help you..."></textarea>
+                            </div>
+                            
+                            <button type="submit" class="w-full bg-red-900 text-white py-3 px-6 rounded-lg font-semibold hover:bg-red-800 transition duration-300">
+                                Send Message
+                            </button>
+                        </form>-->
+
+                   <!-- </div>
+                </div>
+            </div>
+        </section>
+                                
+
+    </div>-->
+
+    <!-- Footer -->
+    <footer class="bg-red-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div>
+                    <div class="flex items-center mb-4">
+                       <img src="logo.jpg" alt="">
+                    </div>
+                    <p class="text-yellow-100 mb-4">Professional services excellence across emergency response, facility management, clean energy, and more.</p>
+                    <div class="flex space-x-3">
+                        <div class="icon-placeholder w-8 h-8 rounded bg-white bg-opacity-20">
+                            📱
+                        </div>
+                        <div class="icon-placeholder w-8 h-8 rounded bg-white bg-opacity-20">
+                            💼
+                        </div>
+                        <div class="icon-placeholder w-8 h-8 rounded bg-white bg-opacity-20">
+                            📘
+                        </div>
+                        <div class="icon-placeholder w-8 h-8 rounded bg-white bg-opacity-20">
+                            📺
+                        </div>
+                        <div class="icon-placeholder w-8 h-8 rounded bg-white bg-opacity-20">
+                            📷
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" onclick="showPage('home')" class="text-yellow-100 hover:text-white transition duration-300">Home</a></li>
+                        <li><a href="#" onclick="showPage('about')" class="text-yellow-100 hover:text-white transition duration-300">About Us</a></li>
+                        <li><a href="#" onclick="showPage('services')" class="text-yellow-100 hover:text-white transition duration-300">Services</a></li>
+                        <li><a href="#" onclick="showPage('projects')" class="text-yellow-100 hover:text-white transition duration-300">Projects</a></li>
+                    </ul>
+                </div>
+
+                <!-- Services -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Services</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-yellow-100 hover:text-white transition duration-300">Emergency Services</a></li>
+                        <li><a href="#" class="text-yellow-100 hover:text-white transition duration-300">Facility Management</a></li>
+                        <li><a href="#" class="text-yellow-100 hover:text-white transition duration-300">Landscaping Services</a></li>
+                        <li><a href="#" class="text-yellow-100 hover:text-white transition duration-300">Waste Management</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact Info</h3>
+                    <div class="space-y-2 text-yellow-100">
+                        <p>📍 G1A, Vani Building CHS, Wadvali Village,  Dr. C G Rd, Chembur Mumbai _400074</p>
+                        <p>📞 +91 9136911082</p>
+                        <p>✉️ vs.fmsgroups@gmail.com</p>
+                        <p>💬 WhatsApp: +91 8097711221</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-red-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-yellow-100">&copy; VS Facility Management Services. All rights reserved.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="text-yellow-100 hover:text-white transition duration-300">Privacy Policy</a>
+                    <a href="#" class="text-yellow-100 hover:text-white transition duration-300">Terms of Service</a>
+                    <a href="#" class="text-yellow-100 hover:text-white transition duration-300">Legal</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let currentPage = 'home';
+
+        function showPage(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
+
+            // Show selected page
+            document.getElementById(pageId).classList.add('active');
+
+            // Update navigation
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+
+            // Find and activate current nav link
+            const activeLinks = document.querySelectorAll(`[onclick="showPage('${pageId}')"]`);
+            activeLinks.forEach(link => {
+                link.classList.add('active');
+            });
+
+            currentPage = pageId;
+
+            // Close mobile menu if open
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.add('hidden');
+
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            showPage('home');
+            setTimeout(triggerHomeAnimations, 500);
+        });
+
+        // Handle form submission
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! This is a demo form - in a real website, your message would be sent to the company.');
+        });
+
+        // Counter animation for metrics
+        function animateCounters() {
+            const counters = document.querySelectorAll('.counter');
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-target'));
+                const increment = target / 100;
+                let current = 0;
+                
+                const updateCounter = () => {
+                    if (current < target) {
+                        current += increment;
+                        counter.textContent = Math.ceil(current) + '+';
+                        setTimeout(updateCounter, 20);
+                    } else {
+                        counter.textContent = target + '+';
+                    }
+                };
+                
+                // Start animation when page loads
+                setTimeout(updateCounter, 1000);
+            });
+        }
+        
+        // Trigger counter animation when home page is shown
+        function triggerHomeAnimations() {
+            if (currentPage === 'home') {
+                animateCounters();
+            }
+        }
+
+        // Handle training inquiries
+        document.querySelectorAll('button').forEach(button => {
+            if (button.textContent.includes('Join Our Training')) {
+                button.addEventListener('click', function() {
+                    alert('Thank you for your interest in our training programs! This would redirect to the enrollment form in a real website.');
+                });
+            }
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9743d521c4de69a5',t:'MTc1NjA0ODgxNC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
