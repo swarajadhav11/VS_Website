@@ -203,6 +203,42 @@
     </div>
   </div>
 </header>
+    <!-- Mobile Menu Button -->
+      <div class="md:hidden">
+        <button id="menu-btn" class="text-gray-700 focus:outline-none">
+          <!-- Hamburger Icon -->
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Navigation -->
+  <nav id="mobile-menu" class="hidden md:hidden bg-white border-t">
+    <div class="flex flex-col space-y-4 p-4">
+      <a href="#" class="nav-link text-gray-700" onclick="showPage('home')">Home</a>
+      <a href="#" class="nav-link text-gray-700" onclick="showPage('about')">About Us</a>
+      <a href="#" class="nav-link text-gray-700" onclick="showPage('services')">Services</a>
+      <a href="#" class="nav-link text-gray-700" onclick="showPage('projects')">Training</a>
+      <a href="#" class="nav-link text-gray-700" onclick="showPage('training')">Gallery</a>
+      <a href="#" class="nav-link text-gray-700" onclick="showPage('heritage')">Our Clients</a>
+      <a href="#" class="nav-link text-gray-700" onclick="showPage('contact')">Contact Us</a>
+    </div>
+  </nav>
+</header>
+
+<!-- Script -->
+<script>
+  const btn = document.getElementById("menu-btn");
+  const menu = document.getElementById("mobile-menu");
+
+  btn.addEventListener("click", () => {
+    menu.classList.toggle("hidden");
+  });
+</script>
 
     <!-- Home Page -->
      <!-- Services Preview on Home -->
